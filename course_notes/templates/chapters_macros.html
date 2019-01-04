@@ -1,0 +1,28 @@
+{% import "sections_macros.html" as sections_macros %}
+
+{% macro site_header() %}
+<div class="jumbotron text-center card mt-4 p-4 shadow-lg">
+    <h1>Software development best practices</h1>
+    <h2>AI Okinawa</h2>
+    <h2>Jakub “Kuba” Kolodziejczyk</h2>
+</div>
+{% endmacro %}
+
+
+{% macro card_header_style() %}
+"h3 card-header text-center bg-success text-white"
+{% endmacro %}
+
+
+{% macro introduction() %}
+    {{ sections_macros.kuba_profile() }}
+    <br><br>
+    {{ sections_macros.course_content_outline() }}
+    <br><br>
+{% endmacro %}
+
+
+
+{% macro finishing_slide() %}
+<img src="/static/images/ai_okinawa_finishing_slide.jpg" width="100%" class="shadow-lg"></div>
+{% endmacro %}
