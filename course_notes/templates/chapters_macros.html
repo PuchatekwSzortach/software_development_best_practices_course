@@ -16,9 +16,30 @@
 
 {% macro introduction() %}
     {{ sections_macros.kuba_profile() }}
-    <br><br>
+    <br><br><br>
     {{ sections_macros.course_content_outline() }}
-    <br><br>
+{% endmacro %}
+
+{% macro testing() %}
+<div class="shadow-lg">
+    <div class={{ card_header_style() }}>Testing</div>
+    <div class="m-4">
+        <ul class="list-group">
+            <li class="list-group-item">It's hard to write complex code correctly</li>
+            <li class="list-group-item">Corner cases</li>
+            <li class="list-group-item">Quickly notice bugs due to changes in underlying code</li>
+            <li class="list-group-item">Refactor with confidence</li>
+            <li class="list-group-item">Executable documentation</li>
+            <li class="list-group-item">Leads to better design</li>
+        </ul>
+
+        <br>
+        Unit testing example
+        <br><br>
+        Acceptance testing example
+        <br>
+    </div>
+</div>
 {% endmacro %}
 
 
