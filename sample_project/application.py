@@ -2,25 +2,34 @@ import flask
 
 import utilities
 
-APP = flask.Flask("software_development_best_practices_course")
 
+def get_app():
+    """
+    Create web app
+    :return: Returns web application server object
+    """
 
-@APP.route("/factorial")
-def get_factorial_endpoint():
+    app = flask.Flask("software_development_best_practices_course")
 
-    if "input" in flask.request.args:
+    @app.route("/factorial")
+    def get_factorial_endpoint():
 
-        input = int(flask.request.args["input"])
-        output = utilities.get_factorial(input)
+        if "input" in flask.request.args:
 
-        return flask.render_template("factorial.html", input=input, output=output)
+            input = int(flask.request.args["input"])
+            output = utilities.get_factorial(input)
 
-    return "provide input please!"
+            return flask.render_template("factorial.html", input=input, output=output)
+
+        return "provide input please!"
+
+    return app
 
 
 def main():
 
-    APP.run(host="0.0.0.0", port=5001)
+    app = get_app()
+    app.run(host="0.0.0.0", port=5001)
 
 
 if __name__ == "__main__":
