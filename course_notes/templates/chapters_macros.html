@@ -59,6 +59,43 @@
 {% endmacro %}
 
 
+{% macro version_control() %}
+<div class="shadow-lg">
+    <div class={{ card_header_style() }}>Version control</div>
+
+    <br><br>
+    <div class="h2 text-center">Should I use git?</div><br>
+
+    <img class="mx-auto d-block" src="https://media0.giphy.com/media/XuBJvrKHutnkQ/giphy.gif">
+    <br>
+
+    <div class="m-4">
+        <ul class="list-group">
+            <li class="list-group-item">What is version control?</li>
+            <li class="list-group-item">Why using version control in personal project?<br>
+                &#8226 easily revert to last known state<br>
+                &#8226 don't worry about breaking something up<br>
+                &#8226 check what change introduced a problem (diff)
+            </li>
+            <li class="list-group-item">Why using version control in a team?<br>
+                &#8226 all of the above<br>
+                &#8226 don't step on each other's toes (branches)<br>
+                &#8226 combine code in a controlled manner (merges)<br>
+                &#8226 code reviews<br>
+                &#8226 pull requests<br>
+                &#8226 continuous integration
+            </li>
+            <li class="list-group-item">Branches</li>
+            <li class="list-group-item">Merges</li>
+            <li class="list-group-item">Resolving conflicts</li>
+        </ul>
+
+        <br>
+    </div>
+</div>
+{% endmacro %}
+
+
 
 {% macro finishing_slide() %}
 <img src="/static/images/ai_okinawa_finishing_slide.jpg" width="100%" class="shadow-lg"></div>
