@@ -15,3 +15,6 @@ def test_factorial_endpoint_with_simple_input():
         response = client.get("/factorial?input=3")
 
         assert response.status_code == 200
+
+        expected = "3! = 6"
+        assert expected in response.get_data(as_text=True)
