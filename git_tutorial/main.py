@@ -9,3 +9,4 @@ if __name__ == "__main__":
 
     print(person)
     print(warrior)
+    print(warrior.kick())

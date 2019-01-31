@@ -1,6 +1,7 @@
 """
 Module with advanced stuff
 """
+import random
 
 import basic
 
@@ -16,3 +17,8 @@ class Warrior(basic.Person):
 
         basic_representation = super().__repr__()
         return basic_representation + ", strength level {}".format(self.strength)
+
+    def kick(self):
+
+        kick_strength = random.randint(0.5 * self.strength, self.strength)
+        return "{} kicking with strength {}!!!".format(self.name, kick_strength)
