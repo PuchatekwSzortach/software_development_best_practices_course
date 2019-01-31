@@ -9,9 +9,7 @@ if __name__ == "__main__":
 
     print(person)
     print(warrior)
-<<<<<<< HEAD
 
     print(warrior.punch())
-=======
     print(warrior.kick())
->>>>>>> git/buba_development
+
