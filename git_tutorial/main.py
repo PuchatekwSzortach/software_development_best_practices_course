@@ -1,3 +1,11 @@
+import basic
+import advanced
+
+
 if __name__ == "__main__":
 
-    print("Working in git tutorial main")
+    person = basic.Person("Tom", 27)
+    warrior = advanced.Warrior("Goku", age=20, strength=9000)
+
+    print(person)
+    print(warrior)
