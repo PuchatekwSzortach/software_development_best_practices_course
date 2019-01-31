@@ -1,7 +1,6 @@
 """
 Module with advanced stuff
 """
-import random
 
 import random
 
