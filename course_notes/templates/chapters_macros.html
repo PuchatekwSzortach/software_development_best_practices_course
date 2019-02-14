@@ -96,6 +96,71 @@
 {% endmacro %}
 
 
+{% macro environment_sandboxing() %}
+<div class="shadow-lg">
+    <div class={{ card_header_style() }}>Sandboxing</div>
+
+    <div class="m-4">
+
+        <div class="h3 text-center">Environment sandboxing</div>
+
+        <br>
+        <img class="mx-auto d-block" src="/static/images/say-works-on-my-machine-again-i-dare-you.jpg">
+        <br>
+
+        <br>
+
+        <ul class="list-group">
+            <li class="list-group-item">Environment resources<br>
+                &#8226 Executables<br>
+                &#8226 Compilers<br>
+                &#8226 Libraries
+            </li>
+            <li class="list-group-item">Problems in not managing resources per project<br>
+                &#8226 Can't easily reproduce environment on a different machine<br>
+                &#8226 Environment update on one project changes environment definition on another project<br>
+                &#8226 Environment update on one project can cause bugs on another project<br>
+            </li>
+            <li class="list-group-item">Solution - environment management!<br>
+                &#8226 Project keeps an environment definition file that defines all resources and their versions<br>
+                &#8226 All resources are installed locally per project, rather than shared across the system<br>
+                &#8226 Environment definition file is version controlled, just like any other code<br>
+                &#8226 Using environment definition, exact environment can be reproduced on another machine<br>
+            </li>
+            <li class="list-group-item">Sample environment definition file from <code>Anaconda</code><br>
+        </ul>
+
+
+        <br><br>
+
+        <div class="h3 text-center">Services sandboxing</div>
+
+        <br><br>
+
+        <ul class="list-group">
+            <li class="list-group-item">Services used on a typical web project<br>
+                &#8226 Database<br>
+                &#8226 File storage<br>
+                &#8226 Web server configuration
+            </li>
+            <li class="list-group-item">Risks in modifying shared services<br>
+                &#8226 Break production<br>
+                &#8226 Break development for other engineers<br>
+                &#8226 Transient bugs<br>
+            </li>
+            <li class="list-group-item">Solution - services sandboxes!<br>
+                &#8226 Each developer uses a local instance of service per project<br>
+                &#8226 Most popular tool for services sandboxing: <code>Docker</code>
+            </li>
+        </ul>
+
+        <br>
+
+    </div>
+</div>
+{% endmacro %}
+
+
 
 {% macro finishing_slide() %}
 <img src="/static/images/ai_okinawa_finishing_slide.jpg" width="100%" class="shadow-lg"></div>
