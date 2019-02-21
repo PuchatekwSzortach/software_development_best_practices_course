@@ -161,6 +161,98 @@
 {% endmacro %}
 
 
+{% macro configuration_management() %}
+<div class="shadow-lg">
+    <div class={{ card_header_style() }}>Configuration management</div>
+
+    <div class="m-4">
+
+        <br>
+
+        <div class="h3 text-center">Typical environments</div>
+
+        <ul class="list-group">
+            <li class="list-group-item">Development - one per engineer</li>
+            <li class="list-group-item">Testing - checks code works on a machine with known configuration, not just your machine</li>
+            <li class="list-group-item">Staging - as close to production as similar, but not used by client (if you have to mess up, do it there)</li>
+            <li class="list-group-item">Production - client facing</li>
+        </ul>
+
+        <br><br>
+
+        <div class="h3 text-center">Parts that differ between environments</div>
+
+        <ul class="list-group">
+            <li class="list-group-item">Database and other services urls</li>
+            <li class="list-group-item">Paths to resources</li>
+            <li class="list-group-item">Ports application uses</li>
+            <li class="list-group-item">Logging options</li>
+        </ul>
+
+        <br><br>
+
+        <div class="h3 text-center">Options for passing configuration to application</div>
+
+        <ul class="list-group">
+            <li class="list-group-item"><b>Command line arguments</b><br><br>
+
+                Passing configuration to application:<br>
+                <code>./myapp --database-url=... --port=123 ---loglevel=info</code><br>
+
+                <br>
+
+                Using configuration inside application:<br>
+                {{ sections_macros.configuration_management_with_command_line_arguments_code_usage() }}
+
+                <b>Disadvantages:</b><br>
+                &#8226 a lot of typing, thus not very convenient<br>
+                &#8226 easy to make a mistake<br>
+                &#8226 doesn't scale<br>
+            </li>
+
+            <li class="list-group-item">Environment variables:<br>
+                <code>DATABASE_URL=... PORT=123 LOGLEVEL=info ./myapp</code><br>
+                Exactly same problems as above<br>
+
+                <b>OR</b><br>
+
+                {{ sections_macros.configuration_management_with_environment_variables() }}
+
+                Then from command line:<br>
+                <code>
+                    source ~/.bashrc<br>
+                    ./myapp
+                </code><br>
+
+                Using configuration inside application:<br>
+                {{ sections_macros.configuration_management_with_environment_variables_code_usage() }}
+
+                <b>Disadvantages:</b><br>
+
+                &#8226 Configuration isn't stored in project, thus can't be version controlled<br>
+                &#8226 Environment variables are essentially globals, so it's hard to see all inputs to a given piece of code<br>
+            </li>
+
+            <li class="list-group-item">Configuration file:<br>
+                {{ sections_macros.configuration_management_with_configuration_file() }}
+
+                Passing configuration to application:<br>
+                <code>./myapp --config-path=./configuration/development_config.yaml</code><br>
+
+                Using configuration inside application:<br>
+                {{ sections_macros.configuration_management_with_configuration_file_code_usage() }}
+
+            </li>
+
+        </ul>
+
+        <br>
+
+
+    </div>
+</div>
+{% endmacro %}
+
 
 {% macro finishing_slide() %}
 <img src="/static/images/ai_okinawa_finishing_slide.jpg" width="100%" class="shadow-lg"></div>

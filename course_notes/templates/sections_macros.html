@@ -53,3 +53,94 @@
     </div>
 </div>
 {% endmacro %}
+
+
+{% macro configuration_management_with_command_line_arguments_code_usage() %}
+<pre><code class="python"># .myapp.py
+def get_arguments_parser():
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--database-url")
+    parser.add_argument("--port")
+    parser.add_argument("--loglevel")
+
+    return parser
+
+
+def foo(database_url):
+
+    print("Doing something with {}".format(database_url))
+
+
+def main():
+
+    parser = get_arguments_parser()
+    arguments = parser.parse_args()
+
+    foo(arguments["database_url"])
+</code></pre>
+{% endmacro %}
+
+
+{% macro configuration_management_with_environment_variables() %}
+<pre><code class="bash"># .bashrc
+export DATABASE_URL=...
+export PORT="123"
+export LOGLEVEL="info"
+</code></pre>
+{% endmacro %}
+
+
+{% macro configuration_management_with_environment_variables_code_usage() %}
+<pre><code class="python"># .myapp.py
+import os
+def foo():
+
+    database_url = os.environ["DATABASE_URL"]
+    print("Doing something with {}".format(database_url))
+
+
+def main():
+
+    foo()
+</code></pre>
+{% endmacro %}
+
+
+{% macro configuration_management_with_configuration_file() %}
+<pre><code class="yaml"># ./my_app/configurations/development_config.yaml
+DATABASE_URL=...
+PORT="123"
+LOGLEVEL="info"
+</code></pre>
+{% endmacro %}
+
+
+{% macro configuration_management_with_configuration_file_code_usage() %}
+<pre><code class="python"># .myapp.py
+import yaml
+def get_arguments_parser():
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--config-path")
+
+    return parser
+
+
+def foo(database_url):
+
+    print("Doing something with {}".format(database_url))
+
+
+def main():
+
+    parser = get_arguments_parser()
+    arguments = parser.parse_args()
+
+    with open(arguments["config-path"]) as file:
+
+        config = yaml.loads(file)
+
+    foo(config["database_url"])
+</code></pre>
+{% endmacro %}
