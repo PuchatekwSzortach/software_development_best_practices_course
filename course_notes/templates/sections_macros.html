@@ -94,6 +94,7 @@ export LOGLEVEL="info"
 {% macro configuration_management_with_environment_variables_code_usage() %}
 <pre><code class="python"># .myapp.py
 import os
+
 def foo():
 
     database_url = os.environ["DATABASE_URL"]
@@ -108,7 +109,7 @@ def main():
 
 
 {% macro configuration_management_with_configuration_file() %}
-<pre><code class="yaml"># ./my_app/configurations/development_config.yaml
+<pre><code class="yaml"># ./configurations/development_config.yaml
 DATABASE_URL=...
 PORT="123"
 LOGLEVEL="info"
@@ -119,6 +120,7 @@ LOGLEVEL="info"
 {% macro configuration_management_with_configuration_file_code_usage() %}
 <pre><code class="python"># .myapp.py
 import yaml
+
 def get_arguments_parser():
 
     parser = argparse.ArgumentParser()

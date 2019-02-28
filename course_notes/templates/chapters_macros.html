@@ -194,60 +194,157 @@
         <div class="h3 text-center">Options for passing configuration to application</div>
 
         <ul class="list-group">
-            <li class="list-group-item"><b>Command line arguments</b><br><br>
-
-                Passing configuration to application:<br>
-                <code>./myapp --database-url=... --port=123 ---loglevel=info</code><br>
-
-                <br>
-
-                Using configuration inside application:<br>
-                {{ sections_macros.configuration_management_with_command_line_arguments_code_usage() }}
-
-                <b>Disadvantages:</b><br>
-                &#8226 a lot of typing, thus not very convenient<br>
-                &#8226 easy to make a mistake<br>
-                &#8226 doesn't scale<br>
-            </li>
-
-            <li class="list-group-item">Environment variables:<br>
-                <code>DATABASE_URL=... PORT=123 LOGLEVEL=info ./myapp</code><br>
-                Exactly same problems as above<br>
-
-                <b>OR</b><br>
-
-                {{ sections_macros.configuration_management_with_environment_variables() }}
-
-                Then from command line:<br>
-                <code>
-                    source ~/.bashrc<br>
-                    ./myapp
-                </code><br>
-
-                Using configuration inside application:<br>
-                {{ sections_macros.configuration_management_with_environment_variables_code_usage() }}
-
-                <b>Disadvantages:</b><br>
-
-                &#8226 Configuration isn't stored in project, thus can't be version controlled<br>
-                &#8226 Environment variables are essentially globals, so it's hard to see all inputs to a given piece of code<br>
-            </li>
-
-            <li class="list-group-item">Configuration file:<br>
-                {{ sections_macros.configuration_management_with_configuration_file() }}
-
-                Passing configuration to application:<br>
-                <code>./myapp --config-path=./configuration/development_config.yaml</code><br>
-
-                Using configuration inside application:<br>
-                {{ sections_macros.configuration_management_with_configuration_file_code_usage() }}
-
-            </li>
-
+            <li class="list-group-item">Command line arguments</li>
+            <li class="list-group-item">Environment variables</li>
+            <li class="list-group-item">Configuration file</li>
         </ul>
 
-        <br>
+        <br><br>
 
+        <div>
+            <div class="h3 text-center">Command line arguments</div>
+
+            Passing configuration to application:<br>
+            <code>./myapp --database-url=... --port=123 ---loglevel=info</code><br>
+
+            <br>
+
+            Using configuration inside application:<br><br>
+            {{ sections_macros.configuration_management_with_command_line_arguments_code_usage() }}
+
+            <b>Disadvantages:</b><br>
+            &#8226 a lot of typing, thus not very convenient<br>
+            &#8226 easy to make a mistake<br>
+            &#8226 doesn't scale<br>
+        </div>
+
+        <br><br>
+
+        <div>
+            <div class="h3 text-center">Environment variables:</div><br>
+
+            Passing configuration to application:<br>
+            <code>DATABASE_URL=... PORT=123 LOGLEVEL=info ./myapp</code><br>
+            Suffers from exactly same problems as above<br><br>
+
+            <b>OR</b><br><br>
+
+            {{ sections_macros.configuration_management_with_environment_variables() }}
+
+            Then from command line:<br>
+            <code>
+                source ~/.bashrc<br>
+                ./myapp
+            </code>
+
+            <br><br>
+
+            Using configuration inside application:<br><br>
+            {{ sections_macros.configuration_management_with_environment_variables_code_usage() }}
+
+            <b>Disadvantages:</b><br>
+
+            &#8226 Configuration isn't stored in project, thus can't be version controlled<br>
+            &#8226 Environment variables are essentially globals, so it's hard to see all inputs to a given piece of code<br>
+        </div>
+
+        <br><br>
+
+        <div>
+
+            <div class="h3 text-center">Configuration file:</div><br>
+
+            Define configuration file:<br><br>
+            {{ sections_macros.configuration_management_with_configuration_file() }}
+
+            Passing configuration to application:<br>
+            <code>./myapp --config-path=./configuration/development_config.yaml</code><br><br>
+
+            Using configuration inside application:<br><br>
+            {{ sections_macros.configuration_management_with_configuration_file_code_usage() }}
+
+            <b>Advantages:</b><br>
+
+            &#8226 Version controlled<br>
+            &#8226 Easy to add new options<br>
+            &#8226 Visible in code<br>
+
+        </div>
+
+        <br><br>
+
+    </div>
+</div>
+{% endmacro %}
+
+
+{% macro continuous_integration() %}
+<div class="shadow-lg">
+    <div class={{ card_header_style() }}>Continuous integration</div>
+
+    <div class="m-4">
+
+        <ul class="list-group">
+            <li class="list-group-item">What is continuous integration<br>
+                &#8226 A systematic process for frequently merging new code into main codebase<br>
+                &#8226 Developers push their code to master branch often<br>
+                &#8226 Each push is run through automated tests and results are visible to everyone in company<br>
+                &#8226 Bad code is automatically rejected by integration server
+            </li>
+            <li class="list-group-item">What problems it tries to solve<br>
+                &#8226 Large and difficult merges<br>
+                &#8226 Developers working on old code<br>
+                &#8226 Bugs surfacing weeks after they were introduced
+            </li>
+        </ul>
+
+        <br><br>
+
+        <div class="h3 text-center">Typical stages in continuous integration pipeline</div><br>
+
+        <ul class="list-group">
+            <li class="list-group-item">Commit stage<br>
+                &#8226 Build executables and other deliverables (e.g. documentation)<br>
+                &#8226 Run static code analysis<br>
+                &#8226 Run unit tests
+            </li>
+            <li class="list-group-item">Acceptance/Integration stage<br>
+                &#8226 Run tests interacting with the app (implies app has to be started for each test)<br>
+                &#8226 Run database migration tests
+            </li>
+            <li class="list-group-item">Optional - Performance profiling stage<br>
+                &#8226 Throughput stress tests<br>
+                &#8226 Load stress tests<br>
+            </li>
+            <li class="list-group-item">Manual - code review stage<br>
+                &#8226 Lead engineer or other senior engineer reviews the code<br>
+            </li>
+        </ul>
+
+        <br><br>
+
+        <div class="h3 text-center">When and where should continuous integration pipeline be triggered</div><br>
+
+        <ul class="list-group">
+            <li class="list-group-item">Automatically on integration server on every commit to master</li>
+            <li class="list-group-item">Automatically on integration server on every pull request</li>
+            <li class="list-group-item">Automatically on integration server on every commit to feature branch</li>
+            <li class="list-group-item">Manually on integration server for any of above at engineer's request</li>
+            <li class="list-group-item">Manually on local machine at engineer's request</li>
+        </ul>
+
+        <br><br>
+
+        <div class="h3 text-center">Popular continuous integration tools</div><br>
+
+        <ul class="list-group">
+            <li class="list-group-item">Jenkins</li>
+            <li class="list-group-item">GoCD</li>
+            <li class="list-group-item">Travis CI</li>
+            <li class="list-group-item">Quite a few others...</li>
+        </ul>
+
+        <br><br>
 
     </div>
 </div>
