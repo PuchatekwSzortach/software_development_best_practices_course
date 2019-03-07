@@ -284,18 +284,23 @@
 
     <div class="m-4">
 
+        <div class="h3 text-center">What is a continuous integration?</div><br>
+
         <ul class="list-group">
-            <li class="list-group-item">What is continuous integration<br>
-                &#8226 A systematic process for frequently merging new code into main codebase<br>
-                &#8226 Developers push their code to master branch often<br>
-                &#8226 Each push is run through automated tests and results are visible to everyone in company<br>
-                &#8226 Bad code is automatically rejected by integration server
-            </li>
-            <li class="list-group-item">What problems it tries to solve<br>
-                &#8226 Large and difficult merges<br>
-                &#8226 Developers working on old code<br>
-                &#8226 Bugs surfacing weeks after they were introduced
-            </li>
+            <li class="list-group-item">A systematic process for frequently merging new code into main codebase</li>
+            <li class="list-group-item">Developers push their code to master branch often</li>
+            <li class="list-group-item">Each push is run through automated tests and results are visible to everyone in company</li>
+            <li class="list-group-item">Bad code is automatically rejected by integration server</li>
+        </ul>
+
+        <br><br>
+
+        <div class="h3 text-center">What problems it tries to solve</div><br>
+
+        <ul class="list-group">
+            <li class="list-group-item">Large and difficult merges</li>
+            <li class="list-group-item">Developers working on old code</li>
+            <li class="list-group-item">Bugs surfacing weeks after they were introduced</li>
         </ul>
 
         <br><br>
@@ -342,6 +347,115 @@
             <li class="list-group-item">GoCD</li>
             <li class="list-group-item">Travis CI</li>
             <li class="list-group-item">Quite a few others...</li>
+        </ul>
+
+        <br><br>
+
+    </div>
+</div>
+{% endmacro %}
+
+
+{% macro code_reviews() %}
+<div class="shadow-lg">
+    <div class={{ card_header_style() }}>Code reviews</div>
+
+    <div class="m-4">
+
+        <div class="h3 text-center">Code review process</div><br>
+
+        <ul class="list-group">
+            <li class="list-group-item">Developer works on code in her own branch</li>
+            <li class="list-group-item">Once developer finished a logical piece of work, sends pull request</li>
+            <li class="list-group-item">Code is first reviewed by automatic tests - see <code>continuous integration</code></li>
+            <li class="list-group-item">A senior engineer reviews code - reads it, highlights issues if any</li>
+            <li class="list-group-item">
+                If code passes review, it's merged to master. Else developer fixes any issues and sends a new pull request
+            </li>
+        </ul>
+
+        <br><br>
+
+        <div class="h3 text-center">Benefits of code reviews</div><br>
+
+        <ul class="list-group">
+            <li class="list-group-item">Catches bugs before they make it to master branch</li>
+            <li class="list-group-item">Increases codebase understanding among team members</li>
+            <li class="list-group-item">
+                Training for junior (and senior!) engineers - reviewer looks at your code and gives you feedback
+            </li>
+            <li class="list-group-item">
+                More cohesive architecture - reviewer can enforce similar style to whole codebase
+            </li>
+        </ul>
+
+        <br><br>
+
+        <img class="mx-auto d-block" src="https://media.giphy.com/media/TDMwAs1KQVQWI/giphy.gif"><br>
+        <div class="h5 text-center text-secondary">
+            Final boss one the quest to merge your code to master - the fearsome reviewer!
+        </div>
+    <br>
+
+    </div>
+</div>
+{% endmacro %}
+
+
+{% macro continuous_deployment() %}
+<div class="shadow-lg">
+    <div class={{ card_header_style() }}>Continuous deployment</div>
+
+    <div class="m-4">
+
+        <br>
+
+        <ul class="list-group">
+            <li class="list-group-item">Release often, fail fast</li>
+            <li class="list-group-item">Continuous deployment is continuous integration taken to its logical conclusion</li>
+        </ul>
+
+        <br><br>
+
+        <div class="h3 text-center">Common reasons for deployments failures</div><br>
+
+        <ul class="list-group">
+            <li class="list-group-item">It's a complex manual process and someone gets a step wrong, e.g.<br>
+                &#8226 forgets to rewrite symbolic link<br>
+                &#8226 forgets to update environment<br>
+                &#8226 uploads wrong external resources configuration (e.g. development config instead of production config)<br>
+                &#8226 doesn't link new version to correct load balancer<br>
+                &#8226 etc
+
+            </li>
+            <li class="list-group-item">New code doesn't handle existing data correctly - a regression bug</li>
+            <li class="list-group-item"><code>Bad database refactoring</code></li>
+        </ul>
+
+        <br><br>
+
+        <div class="h3 text-center">Benefits of continuous deployment</div><br>
+
+        <ul class="list-group">
+            <li class="list-group-item">Smaller window of change == smaller chance of failure</li>
+            <li class="list-group-item">When you do fail, you have a smaller amount of code to look at to find the problem</li>
+            <li class="list-group-item">Quicker time to marker</li>
+            <li class="list-group-item">Forces deployment process automation - which decreases manual process risk</li>
+            <li class="list-group-item">If you can deploy fast, then you can recover fast too</li>
+        </ul>
+
+        <br><br>
+
+        <div class="h3 text-center">Deployment best practices</div><br>
+
+        <ul class="list-group">
+            <li class="list-group-item">Staging environment and production environment<br>
+                &#8226 staging environment should be as similar to production as possible - real database, real load balancer, etc<br>
+                &#8226 but - <code>never use production data in staging!</code><br>
+
+            </li>
+            <li class="list-group-item">Automate as much as possible</li>
+            <li class="list-group-item">Sanity tests for production environment</li>
         </ul>
 
         <br><br>
