@@ -465,6 +465,81 @@
 {% endmacro %}
 
 
+{% macro infrastructure_as_code() %}
+<div class="shadow-lg">
+    <div class={{ card_header_style() }}>Infrastructure as code</div>
+
+    <div class="m-4">
+
+        <br>
+
+        <div class="h3 text-center">Common infrastructure tasks</div><br>
+
+        <ul class="list-group">
+            <li class="list-group-item">Provisioning servers<br>
+                &#8226 start virtual machine with correct hardware and software combination<br>
+                &#8226 update third party code<br>
+                &#8226 update app code<br>
+                &#8226 update operating system configuration<br>
+                &#8226 update test updates<br>
+            </li>
+            <li class="list-group-item">Setting up virtual network</li>
+            <li class="list-group-item">Setting up network security groups</li>
+            <li class="list-group-item">Setting up application gateways and load balancers</li>
+            <li class="list-group-item">Hooking up application <code>gateways <-> load balancers <-> servers</code> chain</li>
+            <li class="list-group-item">Provisioning and configuring other resources<br>
+                &#8226 hard drives<br>
+                &#8226 cloud storage<br>
+                &#8226 databases<br>
+                &#8226 static IPs<br>
+                &#8226 etc<br>
+            </li>
+        </ul>
+
+
+        <br><br>
+
+        <div class="h3 text-center">Problems with manually managing infrastructure</div><br>
+
+        <ul class="list-group">
+            <li class="list-group-item">Low bus factor</li>
+            <li class="list-group-item">Easy for mistakes to creep in</li>
+            <li class="list-group-item">High risk of subtle differences between resources</li>
+        </ul>
+
+        <br><br>
+
+        <div class="h3 text-center">Benefits of automating infrastructure tasks</div><br>
+
+        <ul class="list-group">
+            <li class="list-group-item">Repeatable and consistent</li>
+            <li class="list-group-item">Scalable</li>
+            <li class="list-group-item">Faster (though not fast - provisioning servers often takes several few minutes)</li>
+            <li class="list-group-item">Code constitutes an executable documentation - never out of date</li>
+            <li class="list-group-item">Easier to inherit, refactor and learn from</li>
+        </ul>
+
+        <br><br>
+
+        <div class="h3 text-center">Popular infrastructure as code tool</div><br>
+
+        <ul class="list-group">
+            <li class="list-group-item"><code>Terraform</code></li>
+            <li class="list-group-item">AWS CloudFormation/Azure Resource Manager Templates</li>
+            <li class="list-group-item">Ansible</li>
+            <li class="list-group-item">SaltStack</li>
+            <li class="list-group-item">Puppet</li>
+            <li class="list-group-item">Chef</li>
+
+        </ul>
+
+        <br><br>
+
+    </div>
+</div>
+{% endmacro %}
+
+
 {% macro finishing_slide() %}
 <img src="/static/images/ai_okinawa_finishing_slide.jpg" width="100%" class="shadow-lg"></div>
 {% endmacro %}
